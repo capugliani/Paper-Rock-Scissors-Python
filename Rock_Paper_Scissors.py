@@ -42,22 +42,32 @@ a8P_____88 88P'   "Y8 88P'   "Y8 a8"     "8a 88P'   "Y8
 '''
 
 print("Hi!\nWelcome to the Rock, Papers and Scizors game!\nYou are going to be facing the Bot.\n")
-print("Type: 1. for Rock\n2. for Paper\n3. for Scissor\n\n\n")
-choice = int(input("Type here: "))
+print("Type: 1 or rock.\nTo choose Rock\n\nType: 2 or paper.\nTo choose Paper\n\nType: 3 or scissor.\nTo choose Scissor\n\n\n")
+choice = input("Type here: ")
+
+choice.lower()
+number_choice_lowercase = int(choice)
+if choice == 'rock':
+    number_choice_lowercas = 1
+elif choice == 'paper':
+    number_choice_lowercase = 2
+elif choice == 'scissor' or choice == 'scissors':
+    number_choice_lowercase = 3
+
 
 hands = [rock, paper, scissors]
 
 npc_choice = random.randint(1, 3)
 
-if choice == 1:
+if choice == '1' or choice == 'rock':
     print("You choose Rock!")
-    print(hands[choice - 1])
-elif choice == 2:
+    print(hands[number_choice_lowercase - 1])
+elif choice == '2' or choice == 'paper':
     print("You choose Paper!")
-    print(hands[choice - 1])
-elif choice == 3:
+    print(hands[number_choice_lowercase - 1])
+elif choice == '3' or choice == 'scissor' or choice == 'scissors':
     print("You choose Scissor!")
-    print(hands[choice - 1])
+    print(hands[number_choice_lowercase - 1])
 else:
     print("You choose nothing!")
     print(error)
@@ -73,16 +83,16 @@ elif npc_choice == 3:
     print(hands[npc_choice-1])
 
 
-if choice > 3 or choice <= 0:
+if number_choice_lowercase > 3 or number_choice_lowercase <= 0:
     print("\nYou've typed a invalid number!\nYou lose!")
-elif choice == npc_choice:
+elif number_choice_lowercase == npc_choice:
     print("\nIt's a Draw!")
-elif choice < npc_choice and choice + 1 != npc_choice:
+elif number_choice_lowercase < npc_choice and number_choice_lowercase + 1 != npc_choice:
     print("\nYou Won!")
-elif choice < npc_choice and choice + 1 == npc_choice:
+elif number_choice_lowercase < npc_choice and number_choice_lowercase + 1 == npc_choice:
     print("\nYou Lose!")
-elif choice > npc_choice and choice - 1 == npc_choice :
+elif number_choice_lowercase > npc_choice and number_choice_lowercase - 1 == npc_choice :
     print("\nYou Won!")
-elif choice > npc_choice and choice - 1 != npc_choice:
+elif number_choice_lowercase > npc_choice and number_choice_lowercase - 1 != npc_choice:
     print("\nYou Lose!")
     
