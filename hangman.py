@@ -22,7 +22,7 @@ while lives != counting_end and right_guesses != letters_list:
 
     code_running = 0
     checking_list = 0
-    checking_list2 = 0
+
     for item in guessed_letters:
         if guess == guessed_letters[checking_list]:
             guessed_letters.remove(guess)
