@@ -18,7 +18,7 @@ while lives != counting_end and right_guesses != letters_list:
     print(f"The word is:\n{underline_list}")
     guess = input("Guess a letter: ").lower()
     chosen_letters_list.insert(0, guess)
-    print(f"Letters already choosen:\n{chosen_letters_list}")
+    print(f"Letters already chosen:\n{chosen_letters_list}")
 
     code_running = 0
     checking_list = 0
