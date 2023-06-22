@@ -40,7 +40,9 @@ while lives != counting_end and right_guesses != letters_list:
 
     if counting_end == 7:
         print("YOU LOSE!")
-    if right_guesses >= 7:
+    if right_guesses == letters_list:
         print("YOU WIN!")
 
 print(underline_list)
+print("\nThe correct word is:")
+print(random_word)
