@@ -28,8 +28,6 @@ while lives != counting_end and right_guesses != letters_list:
             guessed_letters.remove(guess)
             right_guesses -= 1
         checking_list += 1
-        
-    wrong_letter_count = 0
 
     for letter in random_word:
         if guess == random_word[code_running]:
@@ -40,5 +38,9 @@ while lives != counting_end and right_guesses != letters_list:
         code_running += 1
     counting_end += 1
 
+    if counting_end == 7:
+        print("YOU LOSE!")
+    if right_guesses >= 7:
+        print("YOU WIN!")
+
 print(underline_list)
-print("GAME OVER!")
