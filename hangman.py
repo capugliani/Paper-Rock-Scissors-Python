@@ -27,6 +27,7 @@ while lives != counting_end and right_guesses != letters_list:
         if guess == guessed_letters[checking_list]:
             guessed_letters.remove(guess)
             right_guesses -= 1
+            print("You already tried this letter, Please, Try another!")
         checking_list += 1
 
     for letter in random_word:
@@ -44,5 +45,5 @@ while lives != counting_end and right_guesses != letters_list:
         print("YOU WIN!")
 
 print(underline_list)
-print("\nThe correct word is:")
+print("\nThe word was:")
 print(random_word)
