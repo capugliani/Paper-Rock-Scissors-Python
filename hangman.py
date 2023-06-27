@@ -72,10 +72,12 @@ end_game = 0
 guessed_letters = []
 chosen_letters_list = []
 
-while lives != end_game and right_guesses != letters_list:
+while lives != end_game and right_guesses <= letters_list:
     print(stages[end_game])
     print(f"The word is:\n{underline_list}")
-    guess = input("Guess a letter: ").lower()
+    guess = input("Guess a letter: ").lower().strip()
+    if guess == random_word:
+        right_guesses = 7
     chosen_letters_list.append(guess)
     print(f"Letters already chosen:\n{chosen_letters_list}")
 
@@ -111,7 +113,6 @@ while lives != end_game and right_guesses != letters_list:
     end_game = len(chosen_letters_list) - len(guessed_letters)
 
     if end_game == lives:
-        print("YOU LOSE!\nThe word was:", random_word.capitalize(), "\nYour tries were:", underline_list)
-    if right_guesses == letters_list:
-        print(f"YOU WIN!\n{underline_list}\nThe word was: {random_word.capitalize()}")
-
+        print("\n\nYOU LOSE!\nThe word was:", random_word.capitalize(), "\nYour tries were:", underline_list)
+    if right_guesses >= letters_list:
+        print(f"\n\nYOU WIN!\n{underline_list}\nThe word was: {random_word.capitalize()}")
