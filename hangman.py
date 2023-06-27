@@ -58,7 +58,7 @@ stages = ['''
 =========
 ''']
 
-word_list = ["lemon", "strawberry", "bird", "brasil"]
+word_list = ["lemon", "strawberry", "bird", "brazil", "shooting", "life", "problem", "solution", "king", "queen", "hangman"]
 random_word = random.choice(word_list)
 letters_list = len(list(random_word))
 
