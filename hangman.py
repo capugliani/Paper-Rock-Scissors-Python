@@ -72,7 +72,7 @@ end_game = 0
 guessed_letters = []
 chosen_letters_list = []
 
-while lives != end_game and right_guesses <= letters_list:
+while lives != end_game and right_guesses < letters_list:
     print(stages[end_game])
     print(f"The word is:\n{underline_list}")
     guess = input("Guess a letter: ").lower().strip()
