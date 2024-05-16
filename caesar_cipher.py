@@ -3,9 +3,29 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 program_running = True
 
 while program_running == True:
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+
+    direction_ok = False
+    while direction_ok != True:
+        direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+        if direction == 'encode':
+            direction_ok = True
+        elif direction == 'decode':
+            direction_ok = True
+        else:
+            print("Sorry, but i didn't understand if you want to encode or decode!")
+            direction_ok = False
+
     text = input("Type your message:\n").lower()
-    shift = int(input("Type the shift number:\n"))
+
+    shift_is_number = False
+    while shift_is_number != True:
+        shiftcheck = input("Type the shift number:\n")
+        if shiftcheck.isdigit():
+            shift = int(shiftcheck)
+            shift_is_number = True
+        else:
+            print("Please, only numbers is allowed in shifting function")
+            shift_is_number = False
 
     reseting_shift = 1
     full_loops = 0
@@ -68,6 +88,7 @@ while program_running == True:
             decrypt_counting += 1
         print_decrypt = ''.join(decrypto_list)
         print(print_decrypt)
+
 
     if direction == 'encode':
         encrypt(text_function=text, shift_function=fixing_number)
