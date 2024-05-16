@@ -1,61 +1,90 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+program_running = True
 
-reseting_shift = 1
-full_loops = 0
+while program_running == True:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
 
-for shift in range(1, shift+1):
-    if reseting_shift == 26:
-        reseting_shift = 1
-        full_loops += 1
-    reseting_shift += 1
-fixing_number = shift - (full_loops * 26)
+    reseting_shift = 1
+    full_loops = 0
 
-def encrypt(text_function, shift_function):
-    encrypt_counting = 0
-    crypto_list = []
-    encrypting_text = list(text_function)
+    for shift in range(1, shift+1):
+        if reseting_shift == 27:
+            reseting_shift = 1
+            full_loops += 1
+        reseting_shift += 1
+    fixing_number = shift - (full_loops * 26)
 
-    for item in encrypting_text:
-        letter_counting = 0
-        if item == ' ':
-            crypto_list.append(' ')
-        for letter in alphabet:
-            if encrypting_text[encrypt_counting] == alphabet[letter_counting]:
-                if letter_counting+shift_function >= 25:
-                    actual_letter = letter_counting+shift_function - 25
-                    crypto_list.append(alphabet[actual_letter])
-                else:
-                    crypto_list.append(alphabet[letter_counting + shift_function])
-            letter_counting += 1
-        encrypt_counting += 1
-    print(''.join(crypto_list))
+    def encrypt(text_function, shift_function):
+        encrypt_counting = 0
+        crypto_list = []
+        encrypting_text = list(text_function)
 
-def decrypt(text_function, shift_function):
-    decrypt_counting = 0
-    decrypto_list = []
-    decrypting_text = list(text_function)
+        for item in encrypting_text:
+            letter_counting = 0
+            for letter in alphabet:
+                if encrypting_text[encrypt_counting] == alphabet[letter_counting]:
+                    if letter_counting+shift_function >= 26:
+                        actual_letter = letter_counting + shift_function - 26
+                        crypto_list.append(alphabet[actual_letter])
+                    else:
+                        crypto_list.append(alphabet[letter_counting + shift_function])
+                letter_counting += 1
+                if letter_counting == 26:
+                    checking_strings = 0
+                    for letter in alphabet:
+                        if letter != item:
+                            checking_strings += 1
+                        if checking_strings >= 26:
+                            crypto_list.append(item)
+            encrypt_counting += 1
+        print_crypt = ''.join(crypto_list)
+        print(print_crypt)
 
-    for item in decrypting_text:
-        letter_counting = 0
-        for letter in alphabet:
-            if decrypting_text[decrypt_counting] == alphabet[letter_counting]:
-                if letter_counting+shift_function >= 25:
-                    actual_letter = letter_counting-shift_function - 25
-                    decrypto_list.append(alphabet[actual_letter])
-                else:
-                    decrypto_list.append(alphabet[letter_counting-shift_function])
-            letter_counting += 1
-        decrypt_counting += 1
-    print(''.join(decrypto_list))
+    def decrypt(text_function, shift_function):
+        decrypt_counting = 0
+        decrypto_list = []
+        decrypting_text = list(text_function)
 
-if direction == 'encode':
-    encrypt(text_function=text, shift_function=fixing_number)
-elif direction == 'decode':
-    decrypt(text_function=text, shift_function=fixing_number)
-else:
-    print("Sorry, but i didn't understand if you want to encode or decode!")
+        for item in decrypting_text:
+            letter_counting = 0
+            for letter in alphabet:
+                if decrypting_text[decrypt_counting] == alphabet[letter_counting]:
+                    if letter_counting - shift_function <= 0:
+                        actual_letter = letter_counting - shift_function + 26
+                        decrypto_list.append(alphabet[actual_letter])
+                    else:
+                        decrypto_list.append(alphabet[letter_counting - shift_function])
+                letter_counting += 1
+                if letter_counting == 26:
+                    checking_strings = 0
+                    for letter in alphabet:
+                        if letter != item:
+                            checking_strings += 1
+                        if checking_strings >= 26:
+                            decrypto_list.append(item)
+            decrypt_counting += 1
+        print_decrypt = ''.join(decrypto_list)
+        print(print_decrypt)
 
+    if direction == 'encode':
+        encrypt(text_function=text, shift_function=fixing_number)
+    elif direction == 'decode':
+        decrypt(text_function=text, shift_function=fixing_number)
+    else:
+        print("Sorry, but i didn't understand if you want to encode or decode!")
+
+    running_question = True
+    while running_question == True:
+        running_question = input("Do you want to keep the program running?\nType 'yes' or 'no': ").lower()
+        if running_question == 'yes':
+            program_running = True
+            running_question = False
+        elif running_question == 'no':
+            program_running = False
+            running_question = False
+        else:
+            print("Sorry, You have to type 'yes' or 'no'")
+            running_question = True
